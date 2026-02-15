@@ -1559,7 +1559,25 @@
     "/api/health": {
       "get": {
         "summary": "Health Check",
+        "description": "健康检查端点",
         "operationId": "health_check_api_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/health/detailed": {
+      "get": {
+        "summary": "Health Check Detailed",
+        "description": "详细健康检查端点",
+        "operationId": "health_check_detailed_api_health_detailed_get",
         "responses": {
           "200": {
             "description": "Successful Response",
