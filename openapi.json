@@ -838,7 +838,7 @@
           "conversations"
         ],
         "summary": "Flush Conversation",
-        "description": "批量提交对话 - 触发记忆提取\n\n流程：\n1. 接收缓冲的对话消息\n2. 敏感信息过滤\n3. 后台异步处理：LLM 提取记忆 + 向量化 + 图构建",
+        "description": "批量提交对话 - 触发记忆提取\n\n流程：\n1. 接收 messages JSON 数组\n2. 格式校验（每条消息必须有 role、content、timestamp）\n3. 后台异步处理：敏感信息过滤 + LLM 提取记忆 + 向量化 + 图构建",
         "operationId": "flush_conversation_api_v1_conversations_flush_post",
         "parameters": [
           {
@@ -2264,38 +2264,17 @@
                 "type": "null"
               }
             ],
-            "title": "Conversation Id"
+            "title": "Conversation Id",
+            "description": "对话ID"
           },
           "messages": {
             "items": {
               "$ref": "#/components/schemas/MessageItem"
             },
             "type": "array",
-            "title": "Messages"
-          },
-          "total_tokens": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Total Tokens",
-            "default": 0
-          },
-          "client_model_version": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Client Model Version",
-            "default": 1
+            "minItems": 1,
+            "title": "Messages",
+            "description": "消息列表，每条包含 role、content、timestamp"
           }
         },
         "type": "object",
@@ -2413,11 +2392,18 @@
         "properties": {
           "role": {
             "type": "string",
-            "title": "Role"
+            "enum": [
+              "user",
+              "assistant"
+            ],
+            "title": "Role",
+            "description": "消息角色：user 或 assistant"
           },
           "content": {
             "type": "string",
-            "title": "Content"
+            "minLength": 1,
+            "title": "Content",
+            "description": "消息内容"
           },
           "tokens": {
             "anyOf": [
@@ -2429,6 +2415,7 @@
               }
             ],
             "title": "Tokens",
+            "description": "Token 数量",
             "default": 0
           },
           "timestamp": {
@@ -2440,7 +2427,8 @@
                 "type": "null"
               }
             ],
-            "title": "Timestamp"
+            "title": "Timestamp",
+            "description": "时间戳"
           }
         },
         "type": "object",
