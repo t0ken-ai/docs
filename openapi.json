@@ -772,6 +772,75 @@
         }
       }
     },
+    "/api/v1/memories/{memory_id}": {
+      "delete": {
+        "tags": [
+          "memories"
+        ],
+        "summary": "Delete Memory",
+        "operationId": "delete_memory_api_v1_memories__memory_id__delete",
+        "parameters": [
+          {
+            "name": "memory_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Memory Id"
+            }
+          },
+          {
+            "name": "args",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "title": "Args"
+            }
+          },
+          {
+            "name": "kwargs",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "title": "Kwargs"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "X-Api-Key"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Delete Memory Api V1 Memories  Memory Id  Delete"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/quota": {
       "get": {
         "tags": [
