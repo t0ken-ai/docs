@@ -632,6 +632,87 @@
         }
       }
     },
+    "/api/v1/memories/list": {
+      "get": {
+        "tags": [
+          "memories"
+        ],
+        "summary": "List Memories",
+        "description": "列出用户的所有记忆\n\nArgs:\n    limit: 返回数量限制（默认 50）\n    offset: 分页偏移（默认 0）",
+        "operationId": "list_memories_api_v1_memories_list_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "title": "Offset"
+            }
+          },
+          {
+            "name": "args",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "title": "Args"
+            }
+          },
+          {
+            "name": "kwargs",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "title": "Kwargs"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "X-Api-Key"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response List Memories Api V1 Memories List Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/memories/search": {
       "post": {
         "tags": [
