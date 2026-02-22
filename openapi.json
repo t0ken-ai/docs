@@ -988,7 +988,7 @@
           "conversations"
         ],
         "summary": "Flush Conversation",
-        "description": "批量提交对话 - 触发记忆提取\n\n流程：\n1. 接收 messages JSON 数组\n2. 格式校验（每条消息必须有 role、content、timestamp）\n3. 后台异步处理：敏感信息过滤 + LLM 提取记忆 + 向量化 + 图构建",
+        "description": "批量提交对话 - 触发记忆提取\n\n流程：\n1. 接收 messages JSON 数组\n2. 格式校验（每条消息必须有 role、content、timestamp）\n3. Celery 异步处理：敏感信息过滤 + LLM 提取记忆 + 向量化 + 图构建",
         "operationId": "flush_conversation_api_v1_conversations_flush_post",
         "parameters": [
           {
