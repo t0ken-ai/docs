@@ -1465,6 +1465,7 @@
           "stats"
         ],
         "summary": "Get Stats",
+        "description": "获取 Agent 统计信息（新架构）",
         "operationId": "get_stats_api_stats_get",
         "parameters": [
           {
@@ -1525,6 +1526,7 @@
           "stats"
         ],
         "summary": "Get Usage Stats",
+        "description": "获取 Agent 使用统计（新架构）",
         "operationId": "get_usage_stats_api_stats_usage_get",
         "parameters": [
           {
@@ -1897,18 +1899,9 @@
           "Agent Auto Registration"
         ],
         "summary": "Get Agent Info",
-        "description": "获取当前 Agent 的信息",
+        "description": "获取当前 Agent 的信息\n\n需要 X-API-Key header 进行认证",
         "operationId": "get_agent_info_api_agents_info_get",
         "parameters": [
-          {
-            "name": "x_api_key",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "title": "X Api Key"
-            }
-          },
           {
             "name": "args",
             "in": "query",
@@ -1923,6 +1916,15 @@
             "required": true,
             "schema": {
               "title": "Kwargs"
+            }
+          },
+          {
+            "name": "X-API-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "X-Api-Key"
             }
           }
         ],
@@ -2217,24 +2219,28 @@
             "type": "string",
             "maxLength": 50,
             "minLength": 1,
-            "title": "Agent Type"
+            "title": "Agent Type",
+            "description": "Agent 类型：openclaw, vscode, cursor 等"
           },
           "agent_name": {
             "type": "string",
             "maxLength": 255,
             "minLength": 1,
-            "title": "Agent Name"
+            "title": "Agent Name",
+            "description": "Agent 实例名称，不能为空"
           },
           "machine_fingerprint": {
             "type": "string",
             "maxLength": 64,
             "minLength": 16,
-            "title": "Machine Fingerprint"
+            "title": "Machine Fingerprint",
+            "description": "机器指纹，16-64 字符"
           },
           "platform": {
             "type": "string",
             "maxLength": 50,
             "title": "Platform",
+            "description": "平台：darwin, win32, linux",
             "default": "unknown"
           }
         },
