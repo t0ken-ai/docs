@@ -719,7 +719,7 @@
           "memories"
         ],
         "summary": "Search Memories",
-        "description": "搜索记忆\n\n搜索模式：\n- is_project_level=False（默认）：只搜当前 agent\n- is_project_level=True：搜索 agent 所属 project 下所有 agent 的记忆",
+        "description": "搜索记忆\n\n搜索模式：\n- is_project_level=True（默认）：搜索 agent 所属 project 下所有 agent 的记忆\n- is_project_level=False：只搜当前 agent",
         "operationId": "search_memories_api_v1_memories_search_post",
         "parameters": [
           {
@@ -790,7 +790,7 @@
           "memories"
         ],
         "summary": "Search Graph",
-        "description": "图搜索接口 - 内部调用统一的 get_context_for_query（向量+图）\n\n搜索模式：\n- is_project_level=False（默认）：只搜当前 agent\n- is_project_level=True：搜索 agent 所属 project 下所有 agent 的记忆\n\n注意：此接口与 /memories/search 共享配额计数逻辑。\n为避免重复计数，此接口不再单独增加使用次数。\n推荐使用 /memories/search 作为主要搜索接口。",
+        "description": "图搜索接口 - 内部调用统一的 get_context_for_query（向量+图）\n\n搜索模式：\n- is_project_level=True（默认）：搜索 agent 所属 project 下所有 agent 的记忆\n- is_project_level=False：只搜当前 agent\n\n注意：此接口与 /memories/search 共享配额计数逻辑。\n为避免重复计数，此接口不再单独增加使用次数。\n推荐使用 /memories/search 作为主要搜索接口。",
         "operationId": "search_graph_api_v1_memories_graph_search_post",
         "parameters": [
           {
@@ -2710,7 +2710,7 @@
               }
             ],
             "title": "Is Project Level",
-            "default": false
+            "default": true
           },
           "limit": {
             "anyOf": [
