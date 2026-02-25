@@ -1591,6 +1591,67 @@
         }
       }
     },
+    "/api/stats/queue": {
+      "get": {
+        "tags": [
+          "stats"
+        ],
+        "summary": "Get Queue Status",
+        "description": "获取 Celery 队列状态\n\n返回各队列的积压任务数量，帮助诊断记忆处理延迟问题。",
+        "operationId": "get_queue_status_api_stats_queue_get",
+        "parameters": [
+          {
+            "name": "args",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "title": "Args"
+            }
+          },
+          {
+            "name": "kwargs",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "title": "Kwargs"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "X-Api-Key"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Get Queue Status Api Stats Queue Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/auth/otp/send": {
       "post": {
         "tags": [
