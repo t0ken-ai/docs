@@ -1777,9 +1777,18 @@
           "Firebase Auth"
         ],
         "summary": "Firebase Auth",
-        "description": "Authenticate with Firebase ID Token\n\nBody: {\"id_token\": \"...\"}",
+        "description": "Authenticate with Firebase ID Token\n\nBody: {\"id_token\": \"...\"}\nor Header: Authorization: Bearer {firebase_id_token}",
         "operationId": "firebase_auth_api_auth_firebase_post",
         "parameters": [
+          {
+            "name": "authorization",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Authorization"
+            }
+          },
           {
             "name": "args",
             "in": "query",
@@ -1798,7 +1807,6 @@
           }
         ],
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
