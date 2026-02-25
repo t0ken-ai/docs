@@ -1781,15 +1781,6 @@
         "operationId": "firebase_auth_api_auth_firebase_post",
         "parameters": [
           {
-            "name": "authorization",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "title": "Authorization"
-            }
-          },
-          {
             "name": "args",
             "in": "query",
             "required": true,
@@ -1803,6 +1794,15 @@
             "required": true,
             "schema": {
               "title": "Kwargs"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Authorization"
             }
           }
         ],
