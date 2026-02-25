@@ -1777,27 +1777,9 @@
           "Firebase Auth"
         ],
         "summary": "Firebase Auth",
-        "description": "Authenticate with Firebase ID Token\n\nHeader: Authorization: Bearer {firebase_id_token}\nor Body: {\"id_token\": \"...\"}",
+        "description": "Authenticate with Firebase ID Token\n\nBody: {\"id_token\": \"...\"}",
         "operationId": "firebase_auth_api_auth_firebase_post",
         "parameters": [
-          {
-            "name": "id_token",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "title": "Id Token"
-            }
-          },
-          {
-            "name": "authorization",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "title": "Authorization"
-            }
-          },
           {
             "name": "args",
             "in": "query",
@@ -1815,6 +1797,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FirebaseAuthRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -2466,6 +2458,19 @@
           "messages"
         ],
         "title": "ConversationFlushRequest"
+      },
+      "FirebaseAuthRequest": {
+        "properties": {
+          "id_token": {
+            "type": "string",
+            "title": "Id Token"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id_token"
+        ],
+        "title": "FirebaseAuthRequest"
       },
       "HTTPValidationError": {
         "properties": {
