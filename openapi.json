@@ -609,7 +609,7 @@
           "memories"
         ],
         "summary": "List Memories",
-        "description": "列出 Agent 的记忆（仅按时间倒序，无向量查找）。\n支持按时间范围、category、tags 过滤；要删除请先 search 再 delete。\n\nArgs:\n    limit: 返回数量限制（默认 50）\n    offset: 分页偏移（默认 0）\n    time_start: ISO8601 起始时间（含）\n    time_end: ISO8601 结束时间（含）\n    categories: 限定 category 列表\n    tags: 限定 tags（Fact.tags 与其中任一有交集即保留）",
+        "description": "列出 Agent 的记忆（仅按时间倒序，无向量查找）。\n支持按时间范围、category、tags、observation_types、concepts 过滤；要删除请先 search 再 delete。\n\nArgs:\n    limit: 返回数量限制（默认 50）\n    offset: 分页偏移（默认 0）\n    time_start: ISO8601 起始时间（含）\n    time_end: ISO8601 结束时间（含）\n    categories: 限定 category 列表\n    tags: 限定 tags（Fact.tags 与其中任一有交集即保留）\n    observation_types: 限定 observation_type 列表（bugfix/feature/refactor/change/discovery/decision）\n    concepts: 限定 concepts（Fact.concepts 与其中任一有交集即保留）",
         "operationId": "list_memories_api_v1_memories_list_get",
         "parameters": [
           {
@@ -2385,6 +2385,34 @@
               }
             ],
             "title": "Tags"
+          },
+          "observation_types": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Observation Types"
+          },
+          "concepts": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Concepts"
           }
         },
         "type": "object",
@@ -2997,6 +3025,34 @@
               }
             ],
             "title": "Tags"
+          },
+          "observation_types": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Observation Types"
+          },
+          "concepts": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Concepts"
           },
           "entity_name": {
             "anyOf": [
