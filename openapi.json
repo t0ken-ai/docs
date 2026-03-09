@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "MemoryX API",
-    "description": "MemoryX – Cognitive Memory API and LLM proxy.\n\n**Base URL:** `https://t0ken.ai/api`\n\n**Consumers:**\n- **SDK / MCP:** Memories (v1), Conversations (v1), Projects, Stats, Agents (auto-register, claim), API Keys\n- **OpenClaw plugin:** LLM Proxy (chat completions with memory injection)\n- **Portal:** Auth (Firebase), Subscription, Install guide\n- **Public:** Models repo (search, autocomplete)\n\n**Auth:** `X-API-Key` for SDK/MCP/plugin; Firebase ID token or Bearer for portal endpoints.",
+    "description": "MemoryX – Cognitive Memory API and LLM proxy.\n\n**Base URL:** `https://memoryx.cloud/api`\n\n**Consumers:**\n- **SDK / MCP:** Memories (v1), Conversations (v1), Projects, Stats, Agents (auto-register, claim), API Keys\n- **OpenClaw plugin:** LLM Proxy (chat completions with memory injection)\n- **Portal:** Auth (Firebase), Subscription, Install guide\n- **Public:** Models repo (search, autocomplete)\n\n**Auth:** `X-API-Key` for SDK/MCP/plugin; Firebase ID token or Bearer for portal endpoints.",
     "version": "1.0.0"
   },
   "paths": {
@@ -1960,7 +1960,7 @@
           "install"
         ],
         "summary": "Get Install Guide",
-        "description": "根据 URL 参数返回对应的安装指南\n\n- ?md=1: 返回 Markdown 格式（给 Agent 的链接）\n- ?client=openclaw: 返回 OpenClaw 指南\n- ?client=vscode: 返回 VS Code 指南\n- 无参数: 重定向到 HTML 页面（人类访问）\n\n示例:\n- https://t0ken.ai/install?md=1 （Agent 访问，返回 OpenClaw 指南）\n- https://t0ken.ai/install?md=1&client=vscode （Agent 访问，返回 VS Code 指南）\n- https://t0ken.ai/install （人类访问，重定向到 HTML）",
+        "description": "根据 URL 参数返回对应的安装指南\n\n- ?md=1: 返回 Markdown 格式（给 Agent 的链接）\n- ?client=openclaw: 返回 OpenClaw 指南\n- ?client=vscode: 返回 VS Code 指南\n- 无参数: 重定向到 HTML 页面（人类访问）\n\n示例:\n- https://memoryx.cloud/install?md=1 （Agent 访问，返回 OpenClaw 指南）\n- https://memoryx.cloud/install?md=1&client=vscode （Agent 访问，返回 VS Code 指南）\n- https://memoryx.cloud/install （人类访问，重定向到 HTML）",
         "operationId": "get_install_guide_install_get",
         "parameters": [
           {
